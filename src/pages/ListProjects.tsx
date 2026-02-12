@@ -21,7 +21,7 @@ export function ListProjects({ app, toolResult }: ProjectsProps) {
         }
     }, [toolResult]);
 
-    const onClickCreateRelease = useCallback(async (project: OctopusProject) => {
+    const onClickShowReleases = useCallback(async (project: OctopusProject) => {
         try {
             // const configuration = getClientConfigurationFromEnvironment();
             // const client = await Client.create(configuration);
@@ -48,7 +48,7 @@ export function ListProjects({ app, toolResult }: ProjectsProps) {
                 { title: "Project Name", render: (project) => project.name },
                 { title: "Project description", render: (project) => project.description },
                 { title: "Disabled", render: (project) => project.isDisabled ? "Yes" : "No" },
-                { title: "Actions", render: (project) => <Button importance={"secondary"} label={"Show Releases"} onClick={() => onClickCreateRelease(project)} /> },
+                { title: "Actions", render: (project) => <Button importance={"secondary"} label={"Show Releases"} onClick={() => onClickShowReleases(project)} /> },
             ]} data={projects} getRowKey={(project) => project.id} />
             {
                 releasesInProject.length === 0
